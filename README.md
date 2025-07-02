@@ -2,9 +2,9 @@
 
 # 背景
 
-考虑到多因子选择标的，低胜率高赔率可能在跑业绩过程中并不明显，
+考虑到多因子选择标的，低胜率高赔率可能在跑业绩过程中效果并不明显:
 
-**【2025-06-23至2025-07-01】，对ETF策略进行如下优化**：
+**【2025-06-23TO2025-07-01】对ETF策略进行如下优化**：
 
 - 特征：
 
@@ -15,29 +15,11 @@
 
   - 根据固定窗口，对夏普比率进行凸优化，过**最优化夏普比率**优化器
   - 直接将**行业择时**嵌入仓位管理（仓位限制根据行业整体收益预测进行动态调整）
+ 
 
-# 【20250110-20250625】回测展示（Ablation Study **Verified** ）：
-
-#### 周频调仓
-
-![image](https://github.com/user-attachments/assets/28b84e96-3b74-46e3-890b-8ea239284e3d)
-
-![image](https://github.com/user-attachments/assets/40320981-46fe-421e-8b24-d0890d7c5f90)
-
-
-![image](https://github.com/user-attachments/assets/1fb7bd16-5003-4f67-b064-c8ad1e3e7c16)
-
-
-#### 日频调仓
-
-![image](https://github.com/user-attachments/assets/5f5b0e51-891f-4a64-9285-ad41de0f1adf)
-
-![image](https://github.com/user-attachments/assets/0bd76c11-db02-4f08-970b-9749f07ca695)
-
-![image](https://github.com/user-attachments/assets/a9f809ed-abc6-4980-af3c-33527dcc2891)
-
-
-
+> 当前待完善：
+1.稳健性检验
+2.其他
 
 # Readme
 
@@ -146,9 +128,41 @@ python app_inter_factor_composite_tcf.py
 - 组合优化需要安装cvxpy库
 - 模型使用5天收益率作为训练目标 
 
+# 【20250110-20250625】回测展示（Ablation Study **Verified** ）：
+
+#### 预测能力（forward5）
+
+```
+R² 平均值: 0.9106
+R² 中位数: 0.9186
+R² 最大值: 0.9703 (801880.SI - 汽车)
+R² 最小值: 0.8044 (801780.SI - 银行)
+
+MSE 平均值: 0.000115
+MSE 中位数: 0.000104
+MSE 最小值: 0.000040 (801880.SI - 汽车)
+MSE 最大值: 0.000220 (801750.SI - 计算机)
+ ```
 
 
-# GRU-FUSION-MODEL
+#### 周频调仓
+
+![image](https://github.com/user-attachments/assets/1fb7bd16-5003-4f67-b064-c8ad1e3e7c16)
+
+![image](https://github.com/user-attachments/assets/28b84e96-3b74-46e3-890b-8ea239284e3d)
+
+![image](https://github.com/user-attachments/assets/40320981-46fe-421e-8b24-d0890d7c5f90)
+
+
+
+#### 日频调仓
+![image](https://github.com/user-attachments/assets/a9f809ed-abc6-4980-af3c-33527dcc2891)
+
+![image](https://github.com/user-attachments/assets/5f5b0e51-891f-4a64-9285-ad41de0f1adf)
+
+![image](https://github.com/user-attachments/assets/0bd76c11-db02-4f08-970b-9749f07ca695)
+
+# GRU-FUSION-MODEL GRU融合模块介绍
 
 ## Introduction
 
